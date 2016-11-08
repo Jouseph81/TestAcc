@@ -1,14 +1,16 @@
 package com.accenture.guardar;
 
-import java.sql.Time;
-
-import org.springframework.web.bind.annotation.RequestParam;
+import org.joda.time.LocalTime;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class GuardarController {
 
-	public void guardar(@RequestParam(value="identificador") int identificador, @RequestParam(value="hora") Time hora) {
-		
+	@RequestMapping(method = RequestMethod.GET, value="/{identificador}/{hora}")
+	public Hora guardar(@PathVariable long identificador, @PathVariable LocalTime hora) {
+		return new Hora(identificador, hora);
 	}
 }
