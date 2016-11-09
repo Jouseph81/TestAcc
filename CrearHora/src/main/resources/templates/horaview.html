@@ -6,21 +6,23 @@
 </head>
 <body>
 	<div>
-		<table>
-			<tr>
-				<td>
-					Identificador: <textarea rows="1" cols="1" th:field="${hora.id}"></textarea>
-				</td>
-				<td>
-					Hora: <textarea rows="1" cols="1" th:field="${hora.hora}"></textarea>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<input type="button" value="Guardar"/>
-				</td>
-			</tr>
-		</table>
+		<form action="/guardar" method="get">
+			<table>
+				<tr>
+					<td>
+						Identificador: <textarea name="identificador" rows="1" cols="1" th:field="${hora.id}"></textarea>
+					</td>
+					<td>
+						Hora: <textarea name="horaDia" rows="1" cols="1" th:field="${hora.hora}"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<button type="submit" value="Guardar"/>
+					</td>
+				</tr>
+			</table>
+		</form>
 	</div>
 </body>
 </html>

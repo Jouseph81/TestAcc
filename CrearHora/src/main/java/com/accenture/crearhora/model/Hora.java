@@ -2,6 +2,9 @@ package com.accenture.crearhora.model;
 
 import org.joda.time.LocalTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties
 public class Hora {
 
 	private final long id;
