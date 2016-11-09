@@ -3,6 +3,8 @@ package com.accenture.crearhora.controller;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.joda.time.LocalTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +31,11 @@ public class CrearHoraController {
 	@RequestMapping("/guardar")
 	public String setHora(@RequestParam(name="id") Long id, @RequestParam(name="hora") LocalTime hora, Model model){
 		RestTemplate restTemplate = new RestTemplate();
-		Hora horaGuardada = restTemplate.getForObject("http://guardarms-microhola.44fs.preview.openshiftapps.com/GuardarHora/" + id + "/" + hora, Hora.class);
+		long ident;
+		DateTimeFormatter fmt = DateTimeFormat.forPattern("H:m");
+		ident = id.longValue();
+		String horaStr = hora.toString(fmt);
+		Hora horaGuardada = restTemplate.getForObject("http://guardarms-microhola.44fs.preview.openshiftapps.com/GuardarHora/" + ident + "/" + horaStr, Hora.class);
 		System.out.println(horaGuardada);
 		return "horaview";
 	}
