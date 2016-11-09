@@ -12,12 +12,13 @@ import org.joda.time.LocalTime;
 public class Hora {
 
 	@Id
-	private final long id;
+	private long id;
 	@Column(nullable = false)
-	private final LocalTime hora;
+	private LocalTime hora;
 	
+	public Hora(){}
+
 	public Hora(long id, LocalTime hora) {
-		super();
 		this.id = id;
 		this.hora = hora;
 	}
@@ -28,5 +29,13 @@ public class Hora {
 
 	public LocalTime getHora() {
 		return hora;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public void setHora(LocalTime hora) {
+		this.hora = hora;
 	}
 }
