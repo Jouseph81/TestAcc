@@ -6,14 +6,14 @@
 </head>
 <body>
 	<div>
-		<form action="/guardar" method="get">
+		<form action="/CrearHora/guardar" method="get">
 			<table>
 				<tr>
 					<td>
-						Identificador: <textarea name="identificador" rows="1" cols="1" th:field="${hora.id}"></textarea>
+						Identificador: <input type="text" name="id" th:value="${hora.id}">
 					</td>
 					<td>
-						Hora: <textarea name="horaDia" rows="1" cols="1" th:field="${hora.hora}"></textarea>
+						Hora: <input type="text" name="hora" th:value="${hora.hora}">
 					</td>
 				</tr>
 				<tr>

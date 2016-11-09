@@ -27,9 +27,9 @@ public class CrearHoraController {
 	}
 	
 	@RequestMapping("/guardar")
-	public String setHora(@RequestParam(name="identificador") Long identificador, @RequestParam(name="horaDia") LocalTime horaDia, Model model){
+	public String setHora(@RequestParam(name="id") Long id, @RequestParam(name="hora") LocalTime hora, Model model){
 		RestTemplate restTemplate = new RestTemplate();
-		Hora horaGuardada = restTemplate.getForObject("http://guardarms-microhola.44fs.preview.openshiftapps.com/GuardarHora/" + identificador + "/" + horaDia, Hora.class);
+		Hora horaGuardada = restTemplate.getForObject("http://guardarms-microhola.44fs.preview.openshiftapps.com/GuardarHora/" + id + "/" + hora, Hora.class);
 		System.out.println(horaGuardada);
 		return "horaview";
 	}
