@@ -1,16 +1,34 @@
 package com.accenture.guardar;
 
 import org.joda.time.LocalTime;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.accenture.guardar.models.Hora;
+import com.accenture.guardar.models.HoraDao;
+
 @RestController
 public class GuardarController {
 
+	@Autowired
+	private HoraDao horaDao;
+	
 	@RequestMapping(method = RequestMethod.GET, value="/{identificador}/{hora}")
 	public Hora guardar(@PathVariable long identificador, @PathVariable LocalTime hora) {
-		return new Hora(identificador, hora);
+		Hora horas = new Hora(identificador, hora);
+		horaDao.save(horas);
+
+		return horas;
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value="/{identificador}")
+	public Hora buscarHora(@PathVariable long identificador) {
+		
+		Hora horaBusc = horaDao.findById(identificador);
+		
+		return horaBusc;
 	}
 }
