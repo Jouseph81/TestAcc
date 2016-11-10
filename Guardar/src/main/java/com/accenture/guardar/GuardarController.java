@@ -17,11 +17,13 @@ public class GuardarController {
 	private HoraDao horaDao;
 	
 	@RequestMapping(method = RequestMethod.GET, value="/{identificador}/{hora}")
-	public Hora guardar(@PathVariable long identificador, @PathVariable LocalTime hora) {
+	public String guardar(@PathVariable long identificador, @PathVariable LocalTime hora) {
 		Hora horas = new Hora(identificador, hora);
 		horaDao.save(horas);
+		
+		String returnStr = "Se ha guardado correctamente la hora!!";
 
-		return horas;
+		return returnStr;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value="/{identificador}")
