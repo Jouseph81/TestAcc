@@ -2,6 +2,7 @@ package com.accenture.guardar;
 
 import org.joda.time.LocalTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,7 +18,7 @@ public class GuardarController {
 	private HoraDao horaDao;
 	
 	@RequestMapping(method = RequestMethod.GET, value="/{identificador}/{hora}")
-	public String guardar(@PathVariable long identificador, @PathVariable LocalTime hora) {
+	public String guardar(@PathVariable long identificador, @PathVariable @DateTimeFormat(pattern="H:m") LocalTime hora) {
 		Hora horas = new Hora(identificador, hora);
 		horaDao.save(horas);
 		
