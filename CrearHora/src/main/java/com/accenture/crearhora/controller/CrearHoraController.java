@@ -37,7 +37,7 @@ public class CrearHoraController {
 		ident = id.longValue();
 		String horaStr = hora.toString(fmt);
 		
-		String horaGuardada = restTemplate.getForObject("http://guardarms-microhola.44fs.preview.openshiftapps.com/GuardarHora/" + ident + "/" + horaStr, String.class);
+		String horaGuardada = restTemplate.getForObject("http://guardarhora-ajmicrohola.44fs.preview.openshiftapps.com/GuardarHora/" + ident + "/" + horaStr, String.class);
 		System.out.println(horaGuardada);
 		model.addAttribute("hora", horaCreada);
 		return "horaview";
